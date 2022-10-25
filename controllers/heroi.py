@@ -4,7 +4,7 @@ from flask_restplus import Resource, fields
 from models.herois import HeroiModel
 from schemas.heroi import HeroiSchema
 
-from server.instante import server
+from server.instance import server
 
 heroi_ns = server.heroi_ns
 heroi_schema = HeroiSchema()
