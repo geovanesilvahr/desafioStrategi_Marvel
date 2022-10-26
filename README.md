@@ -21,5 +21,5 @@ Para Executar, apenas:
 python app.py
 ```
 
-Versão do Python: 3.8.7
+Versão Utilizada do Python: 3.8.7
 
