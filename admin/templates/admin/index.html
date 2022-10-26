@@ -5,28 +5,159 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Desafio Marvel - STRATEGI</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"/>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
 </head>
 <body>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <h1>Card Image with description on :hover</h1>
-    <div class="cards">
-        <div class="card">
-        <h2 class="card-title">Seal</h2>
-        <img src="https://images.unsplash.com/photo-1591485423007-765bde4139ef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80" alt="">
-        <p class="card-desc">Pinnipeds, commonly known as seals,[a] are a widely distributed and diverse clade of carnivorous, fin-footed, semiaquatic marine mammals. They comprise the extant families Odobenidae (whose only living member is the walrus), Otariidae (the eared seals: sea lions and fur seals), and Phocidae (the earless seals, or true seals).</p>
-    </div>
-    <div class="card">
-        <h2 class="card-title">Lion</h2>
-        <img src="https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" alt="">
-        <p class="card-desc">The lion (Panthera leo) is a species in the family Felidae and a member of the genus Panthera. It has a muscular, deep-chested body, short, rounded head, round ears, and a hairy tuft at the end of its tail. It is sexually dimorphic; adult male lions have a prominent mane.</p>
-    </div>
-    <div class="card">
-        <h2 class="card-title">Hawk</h2>
-        <img src="https://images.unsplash.com/photo-1534251369789-5067c8b8602a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" alt="">
-        <p class="card-desc">Hawks are a group of medium-sized diurnal birds of prey of the family Accipitridae. Hawks are widely distributed and vary greatly in size.
-        The subfamily Accipitrinae includes goshawks, sparrowhawks, sharp-shinned hawks and others. This subfamily are mainly woodland birds with long tails and high visual acuity. They hunt by dashing suddenly from a concealed perch.</p>
-    </div>
-</div>
+    <div class="container">
+        {% for heroi in lista_herois %}
+        <div class="blog" style="background-image: url( {{heroi.imagem}})" >
+  
+            <div class="title-box" >
+              <h3>
+              {{ heroi.nome }}
+              </h3>
+              <hr/>
+            </div>  
+            <div class="info">
+              <span>{{ heroi.descricao }}</span>
+          </div>
+
+          
+         <div class="color-overlay"></div>
+        </div>
+        {% endfor %}
+      </div>
 </body>
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700);
+
+        body{
+        background: #323c3f;
+        font-family: Roboto, veranda;
+        padding-bottom: 4em;
+        }
+
+        .blog{
+        position: relative;
+        width: 22em;
+        height: 30em;
+        
+        background: url(https://cache.desktopnexus.com/thumbseg/25/25727-bigthumbnail.jpg) no-repeat;
+        background-size: 22em 30em;
+        box-shadow: 3px 3px 20px rgba(0,0,0,0.5);
+        margin: auto;
+        -webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC);
+        overflow: hidden;
+        }
+        .blog *{
+        position: relative;
+        z-index: 2;
+        }
+        .blog:hover .color-overlay{
+        background:rgba(74, 100, 114, 0.8);
+        }
+        .blog:hover .info{
+        bottom: -3em;
+        opacity: 1;
+        }
+        .blog, .color-overlay{
+        border-radius: 0.7em;
+        }
+        .color-overlay{
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        position: absolute;
+        transition: 0.7s background;
+        background: rgba(74, 100, 114, 0.3);
+        z-index: 1;
+        }
+
+        .title-box{
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+        margin-top: 2em;
+        }
+        .title-box hr{
+        margin-top: -0.4em;
+        margin-bottom: 1em;
+        width: 5em;
+        height: 0.25em;
+        box-sizing: content-box;
+        border: none;
+        background: #D0BC57;
+        }
+        h3{
+        display: inline-block;
+        font-weight: 500;
+        letter-spacing: 2px;
+        font-size: 1.4em;
+        
+        text-align: center;
+        }
+        .intro{
+            width: 170px;
+        margin: 0 auto;
+        color: #fff;
+        font-family: 'Droid Serif', serif;
+        font-size: 13px;
+        font-style: italic;
+        line-height: 18px;
+        }
+
+
+        .info{
+        font-family: 'Droid Serif', serif;
+        font-size: 1.2em;
+        color: #ddd;
+        line-height: 1.1em;
+        padding: 0 2em;
+        
+        position: relative;
+        bottom: -4em;
+        opacity: 0;
+        background: transparent;
+        transition: opacity 0.3s, bottom 0.3s;
+        text-align: center;
+        }
+
+        .footer{
+        display: inline-block;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 10em;
+        background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.9));
+        border-radius:  0 0 0.7em 0.7em;
+        }
+
+        .footer > .icon-holder{
+        position: absolute;
+        bottom: 0;
+        height: 3em;
+        width: 100%;
+        display: inline-block;
+        font-size: 1.2em;
+        padding: 0 2em;
+        
+        }
+
+        .icon-holder i{
+        
+        color: #D0BC57;
+        }
+
+        .icon-holder span, h3{
+        color: #aCcff0;
+        }
+
+        space{
+        display: inline-block;
+        width: 0.6em;
+        height: 1em;
+        }
+    </style>
 </html>

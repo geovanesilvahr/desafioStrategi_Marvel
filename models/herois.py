@@ -1,6 +1,7 @@
 from typing import List
 from db import db
 
+
 class HeroiModel(db.Model):
     __tablename = 'herois'
 

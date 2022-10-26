@@ -5,7 +5,7 @@ from admin.routes import app_heroi
 class Server():
     def __init__(self):
         self.app = Flask(__name__)
-        self.blueprint = Blueprint('api', __name__, url_prefix='/api', template_folder='admin/templates')
+        self.blueprint = Blueprint('api', __name__, url_prefix='/api', template_folder='admin/templates', static_url_path='', static_folder='admin/static')
         self.api = Api(self.blueprint, doc='/doc', title="Desafio STRATEGI Marvel API")
         self.app.register_blueprint(self.blueprint)
         self.app.register_blueprint(app_heroi)

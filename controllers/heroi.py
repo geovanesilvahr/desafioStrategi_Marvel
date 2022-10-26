@@ -1,4 +1,4 @@
-from flask import request, render_template
+from flask import request
 from flask_restplus import Resource, fields
 
 from models.herois import HeroiModel
@@ -45,6 +45,7 @@ class Heroi(Resource):
             heroi_data.delete_from_db()
             return '', 204
         return {'message': ITEM_NOT_FOUND}, 404
+
 
 class HeroiList(Resource):
 
