@@ -1,5 +1,3 @@
-from imp import load_compiled
-from tkinter.tix import Tree
 from ma import ma 
 from models.herois import HeroiModel
 

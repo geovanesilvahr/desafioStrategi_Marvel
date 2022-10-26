@@ -1,4 +1,4 @@
-from flask import request
+from flask import request, render_template
 from flask_restplus import Resource, fields
 
 from models.herois import HeroiModel
@@ -9,6 +9,7 @@ from server.instance import server
 heroi_ns = server.heroi_ns
 heroi_schema = HeroiSchema()
 heroi_list_schema = HeroiSchema(many=True)
+api = server.api
 
 ITEM_NOT_FOUND = 'Heroi not Found'
 
