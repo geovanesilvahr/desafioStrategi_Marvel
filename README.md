@@ -5,7 +5,7 @@ Esse é meu projeto-solução para o Desafio da Empresa STRATEGI. Utilizando:
 - SQLAlchemy
 - Sqlite3 
 - Mashmallow
-- [API Marvel]:(https://developer.marvel.com/)
+- API Marvel
 
 ## Instalação das Dependencias e Executando o Projeto
 
